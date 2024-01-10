@@ -1,0 +1,143 @@
+{
+    "name": "PlayerInputActions",
+    "maps": [
+        {
+            "name": "UI",
+            "id": "343aca51-9fcf-4323-af23-dea7f010eec2",
+            "actions": [
+                {
+                    "name": "Decide",
+                    "type": "Button",
+                    "id": "7670da01-e8d5-46ff-aabf-6d0a926b3780",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UpDown",
+                    "type": "Button",
+                    "id": "46a6c7e0-79ac-4b3f-8176-b3c1f3a893f9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f78db9c4-681d-48bf-b398-f272bef3fea3",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Decide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e3b7826c-6e40-4ac8-9152-3cc82dba3c05",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Decide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "5524da49-45e8-4aa6-8c64-6487baff61c8",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UpDown",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "f7ada6a2-61b8-408a-9aef-b585a63305bc",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UpDown",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "be7ae5df-6528-491c-ab00-2145f9b4f2a5",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UpDown",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "Game",
+            "id": "9e5c52aa-5d98-4e67-908f-b9f329bc6c75",
+            "actions": [
+                {
+                    "name": "Option",
+                    "type": "Button",
+                    "id": "93fe0ca8-7371-4168-9d65-4855114844f8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "bcc996c7-d687-4892-84ea-a2b92b0f2363",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Option",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Test",
+            "id": "775b2639-e207-4a46-86e5-dec46d4b6014",
+            "actions": [
+                {
+                    "name": "Tab",
+                    "type": "Button",
+                    "id": "c339da4a-6340-4177-92fa-a9995faf906d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold,MultiTap",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "81d3662f-0170-458a-ba5f-13bcef759673",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
