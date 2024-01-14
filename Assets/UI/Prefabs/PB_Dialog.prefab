@@ -357,7 +357,8 @@ GameObject:
   - component: {fileID: 8206398395987244851}
   - component: {fileID: 7011824090188018947}
   - component: {fileID: 9076109640068595459}
-  - component: {fileID: 7064666677531273246}
+  - component: {fileID: 6770444125815056425}
+  - component: {fileID: 6517232755679742615}
   m_Layer: 5
   m_Name: PB_Dialog
   m_TagString: Untagged
@@ -448,7 +449,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7064666677531273246
+--- !u!114 &6770444125815056425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -462,9 +463,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nameText: {fileID: 3207691725737098246}
   _mainText: {fileID: 2508044794986031986}
-  _charaName: "\u3053\u306F\u308B"
-  _scenarios:
-  - "\u3000\u5E30\u5B85\u3059\u308B\u3068\u307E\u305A\u3001\u79C1\u5BA4\u306E\u6249\u3068\u3044\u3046\u6249\u3001\u5F15\u304D\u51FA\u3057\u3068\u3044\u3046\u5F15\u304D\u51FA\u3057\u3001\u84CB\u3068\u3044\u3046\u84CB\u306E\u3059\u3079\u3066\u3092\u958B\u3051\u308B\u306E\u304C\u65E5\u8AB2\u3002"
-  - "\u3000\u30D9\u30C3\u30C9\u4E0B\u306E\u7BB1\u3088\u3057\u3001\u30AF\u30ED\u30FC\u30BC\u30C3\u30C8\u3088\u3057\u3001\u93E1\u306E\u79C1\u2026\u2026\u3088\u3057\u3058\u3083\u306A\u3044\u3051\u3069\u3002"
-  - "\u3000\u3068\u3001\u3072\u3068\u3064\u305A\u3064\u78BA\u8A8D\u3057\u3066\u3044\u304F\u306E\u3067\u3059\u3002"
-  - "\u3000\u982D\u9802\u3067\u304A\u56E3\u5B50\u306B\u3057\u305F\u8276\u306E\u306A\u3044\u6817\u6BDB\u306F\u307B\u3064\u308C\u3066\u308B\u3057\u3001\u81EA\u6162\u3060\u3063\u305F\u7FE0\u306E\u76EE\u3082\u4ECA\u306F\u66C7\u3063\u3066\u898B\u3048\u308B\u3002"
+  intervalForCharacterDisplay: 0.05
+--- !u!114 &6517232755679742615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5744276986951082027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3644a03e7050ffa41a17a1a71a30ab9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoadFileName: 

@@ -4,7 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using UnityEngine.UI;
 
+// TextBlockのテキストを制御する
 public class TextController : MonoBehaviour
 {
     [SerializeField]
@@ -12,16 +14,9 @@ public class TextController : MonoBehaviour
     [SerializeField]
     private TMP_Text _mainText;
 
-    [SerializeField]
-    private string _charaName;
-    [SerializeField]
-    private string[] _scenarios;
-
     [SerializeField, Range(0.001f, 0.3f)]
     private float intervalForCharacterDisplay = 0.05f;  // 一文字の表示にかかる時間
 
-    private PlayerInputActions _playerInputActions;
-    private int _currentLine = 0;
     private string currentText = string.Empty;  // 現在の文字列
     private float timeUntilDisplay = 0;         // 表示にかかる時間
     private float timeElapsed = 0;              // 文字列の表示を開始した時間
@@ -33,22 +28,29 @@ public class TextController : MonoBehaviour
         get { return Time.time >= timeElapsed + timeUntilDisplay; }
     }
 
-    private void OnDestroy()
+    // 強制的に全文表示する
+    public void ForceCompleteDisplayText()
     {
-        _playerInputActions.UI.Decide.performed -= PressedNextText;
+        timeUntilDisplay = 0;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    // 次のテキスト表示処理の初期設定
+    public void SetNextLine(string text)
     {
-        _playerInputActions = GameManager.Instance.GetPlayerInputActions;
-        _playerInputActions.UI.Decide.performed += PressedNextText;
+        currentText = text;
+        timeUntilDisplay = currentText.Length * intervalForCharacterDisplay;
+        timeElapsed = Time.time;
+        lastUpdateCharacter = -1;
+    }
 
-        StartNextLine();
+    #region UNITY_CALLBACK
+    // Start is called before the first frame update
+    private void Start()
+    {
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // クリックから経過した時間が想定表示時間の何%か確認し、表示文字数を出す
         int displayCharacterCount = (int)(Mathf.Clamp01((Time.time - timeElapsed) / timeUntilDisplay) * currentText.Length);
@@ -60,40 +62,5 @@ public class TextController : MonoBehaviour
             lastUpdateCharacter = displayCharacterCount;
         }
     }
-
-    void PressedNextText(InputAction.CallbackContext ctx)
-    {
-        if (ctx.interaction is PressInteraction)
-        {
-            StartNextLine();
-        }
-    }
-
-    void StartNextLine()
-    {
-        // 文字の表示が完了してないなら文字をすべて表示する
-        if (!IsCompleteDisplayText)
-        {
-            timeUntilDisplay = 0;
-        }
-        else
-        {
-            _nameText.text = _charaName;
-
-            if (_currentLine == _scenarios.Length)
-            {
-                _currentLine = 0;
-            }
-
-            currentText = _scenarios[_currentLine];
-            _currentLine++;
-
-            // 想定表示時間と現在の時刻をキャッシュ
-            timeUntilDisplay = currentText.Length * intervalForCharacterDisplay;
-            timeElapsed = Time.time;
-
-            // 文字カウントを初期化
-            lastUpdateCharacter = -1;
-        }
-    }
+    #endregion
 }
