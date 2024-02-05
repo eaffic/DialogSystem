@@ -16,7 +16,7 @@ public class FindPath : MonoBehaviour
     private GridBase _grid;
 
     private List<Node> _openList = new List<Node>();
-    private List<Node> _closeList = new List<Node>();
+    private HashSet<Node> _closeList = new HashSet<Node>();
 
     // Start is called before the first frame update
     void Start()
@@ -37,14 +37,11 @@ public class FindPath : MonoBehaviour
         _openList.Clear();
         _closeList.Clear();
 
-        int count = 0;
         // 開始点追加
         _openList.Add(startNode);
         while (_openList.Count > 0)
         {
-            Debug.Log(++count);
             // F値の昇順ソート
-            _openList.Sort((x, y) => x.F.CompareTo(y.F));
             _openList.Sort((x, y) =>
             {
                 int result = x.F.CompareTo(y.F);                    // F値の昇順
@@ -75,7 +72,7 @@ public class FindPath : MonoBehaviour
                     continue;
                 }
 
-                int gCost = currentNode.G + GetNodeDistance(currentNode, endNode);
+                int gCost = currentNode.G + GetNodeDistance(currentNode, node);
                 if (_openList.Contains(node))
                 {
                     // 新しい経路のG値は小さい場合更新する
@@ -105,12 +102,19 @@ public class FindPath : MonoBehaviour
     {
         Stack<Node> path = new Stack<Node>();
         Node node = endNode;
+        // null判定は変な動きになります（無限ループ）
+        // Nodeの連結はおかしくなる（この処理は修正する必要があります）
+        // 
         while (node.ParentNode != null)
         {
             path.Push(node);
             node = node.ParentNode;
         }
+        //path.Push(startNode);
         _grid.NodePath = path;
+
+		// NodeMapのノードの連結はリセットされていないため、毎回の呼び出しは以前の記録が残っている(無限ループの原因になる)
+        _grid.ResetNodeMap();
     }
 
     // 目標位置との距離(マンハッタン距離)

@@ -55,6 +55,18 @@ public class GridBase : MonoBehaviour
         }
     }
 
+    // ノードの連結をクリアする
+    public void ResetNodeMap()
+    {
+        for (int i = 0; i < _gridCountX; ++i)
+        {
+            for (int j = 0; j < _gridCountY; ++j)
+            {
+                _grid[i, j].ParentNode = null;
+            }
+        }
+    }
+
     // 空間位置から対応ノードを取得
     public Node GetFromPosition(Vector3 pos)
     {
